@@ -1,0 +1,44 @@
+<div class="drop-scene" data-drop-scene aria-hidden="true">
+  <span class="droplet"></span>
+  <span class="ripple"></span>
+</div>
+
+<script>
+  import { setupDropMotion } from './drop-motion';
+  setupDropMotion();
+</script>
+
+<style>
+  .drop-scene {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .droplet, .ripple {
+    position: absolute;
+    left: 50%;
+    translate: -50% -50%;
+  }
+
+  .droplet {
+    top: calc(32% + var(--fall, 0) * 39%);
+    width: 2%;
+    aspect-ratio: 1;
+    border: 1px solid #222;
+    border-radius: 0 55% 55%;
+    background: #efefeb;
+    rotate: 45deg;
+    opacity: var(--drop-opacity, 1);
+  }
+
+  .ripple {
+    top: 71%;
+    width: 23%;
+    height: 6%;
+    border: 2px solid var(--ripple-color, #f4f4ed);
+    border-radius: 50%;
+    opacity: var(--ripple-opacity, 0);
+    scale: var(--splash, 0);
+  }
+</style>

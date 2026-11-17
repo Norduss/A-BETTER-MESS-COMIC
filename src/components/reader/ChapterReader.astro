@@ -1,0 +1,52 @@
+---
+import type { Chapter } from '../../content/types';
+import PanelView from './PanelView.astro';
+import '../../styles/reader.css';
+
+interface Props {
+  chapter: Chapter;
+  embedded?: boolean;
+}
+
+const { chapter, embedded } = Astro.props;
+const panels = chapter.rows.flat();
+---
+
+<article id={embedded ? 'relato' : undefined} class="chapter" tabindex={embedded ? -1 : undefined}
+  aria-label={embedded ? chapter.title : undefined} aria-labelledby={embedded ? undefined : 'chapter-title'}>
+  {!embedded && (
+    <header class="chapter-header shell">
+      <p class="chapter-kicker">Acontecimiento {chapter.number}</p>
+      <h1 id="chapter-title">{chapter.title}</h1>
+      {panels[0] && <a class="reader-back" href={`#${panels[0].id}`}>Bajar a la primera viñeta</a>}
+    </header>
+  )}
+
+  <div class:list={['reader-stage', 'shell', { 'reader-stage--indexed': !embedded }]}>
+    {!embedded && (
+      <nav class="scene-nav" aria-label="Viñetas del capítulo">
+        <ul>
+          {panels.map((panel) => (
+            <li><a href={`#${panel.id}`} aria-label={`${panel.id}, ${panel.label}`}>{panel.id}</a></li>
+          ))}
+        </ul>
+      </nav>
+    )}
+
+    <div class="panel-sequence">
+      {chapter.rows.map((row, rowIndex) => (
+        <div class:list={['panel-row', { 'panel-row--shared': row.length > 1 }]} style={`--columns: ${row.length}`}>
+          {row.map((panel, panelIndex) => <PanelView panel={panel} eager={rowIndex === 0 && panelIndex === 0} />)}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <footer class="reader-end shell">
+    <p>Fin de la muestra</p>
+    <div class="reader-end-links">
+      <a class="reader-back" href={embedded ? '#portada' : '#chapter-title'}>Volver al comienzo</a>
+      {!embedded && <a class="reader-back" href="/capitulos/">Volver a capítulos</a>}
+    </div>
+  </footer>
+</article>

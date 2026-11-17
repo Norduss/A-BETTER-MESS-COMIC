@@ -1,0 +1,48 @@
+---
+import type { Panel } from '../../content/types';
+import Drop from '../../effects/Drop.astro';
+import SceneAudio from '../../effects/SceneAudio.astro';
+
+interface Props {
+  panel: Panel;
+  eager: boolean;
+}
+
+const { panel, eager } = Astro.props;
+const { illustration } = panel;
+const parallax = illustration.src ? panel.parallax : undefined;
+const singleTextKind = panel.text.length === 1 ? panel.text[0].kind : undefined;
+---
+
+<section id={panel.id} tabindex="-1" class:list={['panel', `panel--${panel.kind}`, { 'panel--detail': panel.framing === 'detail' }]} aria-label={`${panel.id} · ${panel.label}`}>
+  <figure class="panel-frame">
+    <div class="panel-art" data-parallax={parallax ? '' : undefined} style={parallax && {
+      'aspect-ratio': `${illustration.width} / ${illustration.height}`,
+      '--parallax-focus': parallax.position,
+      '--parallax-mobile-focus': parallax.mobilePosition,
+    }}>
+      {illustration.src ? (
+        <img {...illustration} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+      ) : (
+        <div class="panel-placeholder" role="img" aria-label={illustration.alt} style={`aspect-ratio: ${illustration.width} / ${illustration.height}`}></div>
+      )}
+      {panel.motion === 'drop' && <Drop />}
+    </div>
+    {panel.text.length > 0 && (
+      <figcaption class:list={['panel-text', singleTextKind && `panel-text--${singleTextKind}`]}>
+        {panel.text.map((line) => line.kind === 'dialogue' ? (
+          <p class="speech"><span class="visually-hidden">{line.speaker}: </span>{line.text}</p>
+        ) : (
+          <p class="onomatopoeia">{line.text}</p>
+        ))}
+      </figcaption>
+    )}
+  </figure>
+  <p class="panel-label" aria-hidden="true"><span>{panel.label}</span><span class="panel-id">{panel.id}</span></p>
+  {panel.audio && <SceneAudio audio={panel.audio} />}
+</section>
+
+<script>
+  import { setupParallax } from '../../effects/parallax';
+  setupParallax();
+</script>

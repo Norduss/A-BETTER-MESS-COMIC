@@ -1,0 +1,101 @@
+---
+import type { Panel } from '../content/types';
+
+interface Props {
+  audio: NonNullable<Panel['audio']>;
+}
+
+const { audio } = Astro.props;
+---
+
+<div class="scene-audio" data-scene-audio>
+  <button class="audio-button" type="button" data-play-label={audio.label} hidden>
+    <span class="audio-icon" aria-hidden="true">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 9h4l5-4v14l-5-4H4zM16 9a4 4 0 0 1 0 6m3-9a8 8 0 0 1 0 12" />
+      </svg>
+    </span>
+    <span data-audio-label>{audio.label}</span>
+  </button>
+  <audio preload="none" src={audio.src}></audio>
+  <span role="status" data-audio-status></span>
+</div>
+
+<script>
+  for (const scene of document.querySelectorAll('[data-scene-audio]')) {
+    const player = scene.querySelector('audio');
+    const button = scene.querySelector('button');
+    const label = scene.querySelector('[data-audio-label]');
+    const status = scene.querySelector('[data-audio-status]');
+    if (!player || !button || !label || !status) continue;
+
+    const playLabel = button.dataset.playLabel ?? 'Escuchar sonido';
+    const syncLabel = () => {
+      label.textContent = player.paused || player.ended ? playLabel : 'Detener sonido';
+    };
+
+    button.hidden = false;
+    player.addEventListener('play', syncLabel);
+    player.addEventListener('pause', syncLabel);
+    player.addEventListener('ended', syncLabel);
+
+    button.addEventListener('click', async () => {
+      if (!player.paused && !player.ended) {
+        player.pause();
+        player.currentTime = 0;
+        return;
+      }
+
+      status.textContent = '';
+      try {
+        await player.play();
+      } catch (error) {
+        if (!(error instanceof DOMException && error.name === 'AbortError')) {
+          status.textContent = 'El sonido no está disponible.';
+        }
+        syncLabel();
+      }
+    });
+  }
+</script>
+
+<style>
+  .scene-audio {
+    font-size: 0.875rem;
+  }
+
+  .audio-button {
+    margin-top: 0.375rem;
+    min-height: 2.75rem;
+    padding: 0 0.5rem 0 0;
+    border: 0;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .audio-button:not([hidden]) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .audio-icon {
+    display: grid;
+    place-items: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+  }
+
+  .audio-button:hover .audio-icon {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .audio-button:hover [data-audio-label] { text-decoration: underline; }
+  [data-audio-status]:not(:empty) { margin-left: 0.6rem; }
+</style>

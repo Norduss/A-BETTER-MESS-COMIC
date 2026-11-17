@@ -1,0 +1,18 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
+import { chapters } from '../../content/chapters';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import ChapterReader from '../../components/reader/ChapterReader.astro';
+
+export const getStaticPaths = (() => chapters.map((chapter) => ({
+  params: { id: chapter.id },
+  props: { chapter },
+}))) satisfies GetStaticPaths;
+
+const { chapter } = Astro.props;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+---
+
+<SiteLayout title={chapter.title} immersive>
+  <ChapterReader chapter={chapter} />
+</SiteLayout>

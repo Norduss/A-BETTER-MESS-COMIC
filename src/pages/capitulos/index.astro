@@ -1,0 +1,22 @@
+---
+import { chapters } from '../../content/chapters';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+---
+
+<SiteLayout title="Capítulos">
+  <section class="shell chapter-index" aria-labelledby="indice">
+    <p class="eyebrow">A Better Mess</p>
+    <h1 id="indice">Capítulos</h1>
+    <ul class="chapter-list">
+      {chapters.map((chapter) => (
+        <li>
+          <a href={`/capitulos/${chapter.id}/`}>
+            <span class="chapter-number">{chapter.number}</span>
+            <span><strong>{chapter.title}</strong><small>Muestra · {chapter.rows.flat().length} viñetas</small></span>
+            <span class="chapter-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</SiteLayout>
