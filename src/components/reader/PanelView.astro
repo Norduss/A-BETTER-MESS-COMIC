@@ -29,16 +29,28 @@ const singleTextKind = panel.text.length === 1 ? panel.text[0].kind : undefined;
       {panel.motion === 'drop' && <Drop />}
     </div>
     {panel.text.length > 0 && (
-      <figcaption class:list={['panel-text', singleTextKind && `panel-text--${singleTextKind}`]}>
-        {panel.text.map((line) => line.kind === 'dialogue' ? (
-          <p class="speech"><span class="visually-hidden">{line.speaker}: </span>{line.text}</p>
+      <figcaption>
+        {panel.textInImage ? (
+          <details class="panel-transcript">
+            <summary>Leer texto <span class="visually-hidden">de {panel.id}</span></summary>
+            {panel.text.map((line) => (
+              <p>{line.kind === 'dialogue' && <strong>{line.speaker}. </strong>}{line.text}</p>
+            ))}
+          </details>
         ) : (
-          <p class="onomatopoeia">{line.text}</p>
-        ))}
+          <div class:list={['panel-text', singleTextKind && `panel-text--${singleTextKind}`]}>
+            {panel.text.map((line) => line.kind === 'dialogue' ? (
+              <p class="speech"><span class="visually-hidden">{line.speaker}: </span>{line.text}</p>
+            ) : (
+              <p class="onomatopoeia">{line.text}</p>
+            ))}
+          </div>
+        )}
       </figcaption>
     )}
   </figure>
   <p class="panel-label" aria-hidden="true"><span>{panel.label}</span><span class="panel-id">{panel.id}</span></p>
+  {illustration.src && <a class="panel-enlarge" href={illustration.src} target="_blank" rel="noopener">Ampliar viñeta <span class="visually-hidden">{panel.id}</span></a>}
   {panel.audio && <SceneAudio audio={panel.audio} />}
 </section>
 
