@@ -7,7 +7,8 @@ export interface Illustration {
 
 export type PanelText =
   | { kind: 'dialogue'; speaker: string; text: string }
-  | { kind: 'onomatopoeia'; text: string };
+  | { kind: 'onomatopoeia'; text: string }
+  | { kind: 'caption'; text: string };
 
 export interface Panel {
   id: string;

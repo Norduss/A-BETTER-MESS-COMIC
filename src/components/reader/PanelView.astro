@@ -42,7 +42,7 @@ const singleTextKind = panel.text.length === 1 ? panel.text[0].kind : undefined;
             {panel.text.map((line) => line.kind === 'dialogue' ? (
               <p class="speech"><span class="visually-hidden">{line.speaker}: </span>{line.text}</p>
             ) : (
-              <p class="onomatopoeia">{line.text}</p>
+              <p class={line.kind === 'onomatopoeia' ? 'onomatopoeia' : 'speech'}>{line.text}</p>
             ))}
           </div>
         )}
