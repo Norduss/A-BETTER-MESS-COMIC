@@ -1,22 +1,36 @@
 ---
 import { chapters } from '../../content/chapters';
+import { themeFor } from '../../content/chapter-themes';
+import { webSources } from '../../content/media';
 import SiteLayout from '../../layouts/SiteLayout.astro';
 ---
 
-<SiteLayout title="Capítulos">
+<SiteLayout title="Capítulos" immersive>
   <section class="shell chapter-index" aria-labelledby="indice">
-    <p class="eyebrow">A Better Mess</p>
+    <p class="eyebrow">A Better Mess · Cómic digital episódico</p>
     <h1 id="indice">Capítulos</h1>
+    <p class="chapter-index__lead">Lee la historia completa de corrido desde Inicio, o salta directamente a un capítulo.</p>
     <ul class="chapter-list">
-      {chapters.map((chapter) => (
-        <li>
-          <a href={`/#${chapter.id}`}>
-            <span class="chapter-number">{chapter.number}</span>
-            <span><strong>{chapter.title}</strong><small>{chapter.rows.flat().length} viñetas</small></span>
-            <span class="chapter-arrow" aria-hidden="true">→</span>
-          </a>
-        </li>
-      ))}
+      {chapters.map((chapter) => {
+        const theme = themeFor(chapter.id);
+        const panels = chapter.rows.flat();
+        const cover = panels.find((panel) => panel.id === theme.backdrop) ?? panels[0];
+        const image = cover?.illustration.src ? webSources(cover.illustration.src) : undefined;
+        return (
+          <li class:list={['chapter-card', `chapter-card--${theme.style}`]} style={`--accent: ${theme.accent}; --card-bg: ${theme.bg}`}>
+            <a href={`/#${chapter.id}`}>
+              {image && <img src={image.small ?? image.src} alt="" width="800" height="450" loading="lazy" decoding="async" />}
+              <span class="chapter-card__body">
+                <span class="chapter-number">{chapter.number}</span>
+                <span class="chapter-card__tag">{theme.tag}</span>
+                <strong>{chapter.title}</strong>
+                <small>{panels.length} viñetas</small>
+              </span>
+              <span class="chapter-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        );
+      })}
     </ul>
   </section>
 </SiteLayout>

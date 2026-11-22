@@ -1,0 +1,50 @@
+---
+import type { Chapter } from '../../content/types';
+import { themeFor } from '../../content/chapter-themes';
+import { webSources } from '../../content/media';
+
+interface Props {
+  chapter: Chapter;
+  heading: 'h1' | 'h2';
+  titleId: string;
+  firstPanelHref?: string;
+}
+
+const { chapter, heading: Heading, titleId, firstPanelHref } = Astro.props;
+const theme = themeFor(chapter.id);
+const panels = chapter.rows.flat();
+const backdropPanel = panels.find((panel) => panel.id === theme.backdrop) ?? panels[0];
+const backdrop = backdropPanel?.illustration.src ? webSources(backdropPanel.illustration.src) : undefined;
+const words = chapter.title.split(/\s+/);
+---
+
+<header class:list={['ch-intro', `ch-intro--${theme.style}`]} data-scroll-scene="intro">
+  <div class="ch-intro__stage">
+    {backdrop && (
+      <div class="ch-intro__backdrop" aria-hidden="true">
+        <img src={backdrop.small ?? backdrop.src} alt="" width="800" height="450" loading="lazy" decoding="async" />
+      </div>
+    )}
+    <div class="ch-intro__decor" aria-hidden="true">
+      <span class="ch-intro__number">{chapter.number}</span>
+      <span class="ch-intro__ring"></span>
+      <span class="ch-intro__tape ch-intro__tape--a"></span>
+      <span class="ch-intro__tape ch-intro__tape--b"></span>
+    </div>
+
+    <div class="ch-intro__content">
+      <p class="ch-intro__kicker">
+        <span>Capítulo {chapter.number}</span>
+        <span class="ch-intro__sep" aria-hidden="true"></span>
+        <span>{theme.tag}</span>
+      </p>
+      <Heading id={titleId} class="ch-intro__title" style={`--n: ${words.length}`}>
+        {words.map((word, index) => <><span class="ch-intro__word" style={`--i: ${index}`}>{word}</span>{index < words.length - 1 ? ' ' : ''}</>)}
+      </Heading>
+      <p class="ch-intro__meta">{panels.length} viñetas</p>
+      {firstPanelHref && <a class="ch-intro__skip" href={firstPanelHref}>Ir a la primera viñeta</a>}
+    </div>
+
+    <span class="ch-intro__cue" aria-hidden="true">Sigue bajando</span>
+  </div>
+</header>

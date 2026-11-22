@@ -16,3 +16,8 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 <SiteLayout title={chapter.title} immersive>
   <ChapterReader chapter={chapter} />
 </SiteLayout>
+
+<script>
+  import { setupScrollScenes } from '../../effects/scroll-scenes';
+  setupScrollScenes();
+</script>

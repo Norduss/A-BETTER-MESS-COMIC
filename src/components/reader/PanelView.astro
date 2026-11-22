@@ -1,5 +1,6 @@
 ---
 import type { Panel } from '../../content/types';
+import { webSources } from '../../content/media';
 import Drop from '../../effects/Drop.astro';
 import SceneAudio from '../../effects/SceneAudio.astro';
 
@@ -7,26 +8,49 @@ interface Props {
   panel: Panel;
   eager: boolean;
   anchorId?: string;
+  /** Posición dentro de una fila compartida, para escalonar la aparición. */
+  order?: number;
 }
 
-const { panel, eager, anchorId = panel.id } = Astro.props;
+const { panel, eager, anchorId = panel.id, order = 0 } = Astro.props;
 const { illustration } = panel;
 const parallax = illustration.src ? panel.parallax : undefined;
 const singleTextKind = panel.text.length === 1 ? panel.text[0].kind : undefined;
+const web = illustration.src ? webSources(illustration.src) : undefined;
+const sizes = panel.kind === 'panorama' ? '(min-width: 80rem) 76rem, 100vw' : '(min-width: 68rem) 64rem, 100vw';
+const reveal = panel.kind === 'panorama' ? 'wipe' : panel.framing === 'detail' ? 'zoom' : 'rise';
 ---
 
-<section id={anchorId} tabindex="-1" class:list={['panel', `panel--${panel.kind}`, { 'panel--detail': panel.framing === 'detail' }]} aria-label={`${panel.id} · ${panel.label}`}>
-  <div data-scroll-visual>
+<section
+  id={anchorId}
+  tabindex="-1"
+  class:list={['panel', `panel--${panel.kind}`, { 'panel--detail': panel.framing === 'detail' }]}
+  data-reveal={reveal}
+  style={order ? `--order: ${order}` : undefined}
+  aria-label={`${panel.id} · ${panel.label}`}
+>
   <figure class="panel-frame">
-    <div class="panel-art" data-depth={panel.depth && illustration.src ? '' : undefined} data-parallax={parallax ? '' : undefined} style={parallax && {
+    <div class="panel-art" data-depth={panel.depth && illustration.src ? '' : undefined} data-parallax={parallax ? '' : undefined} style={{
       'aspect-ratio': `${illustration.width} / ${illustration.height}`,
-      '--parallax-focus': parallax.position,
-      '--parallax-mobile-focus': parallax.mobilePosition,
+      ...(parallax && {
+        '--parallax-focus': parallax.position,
+        '--parallax-mobile-focus': parallax.mobilePosition,
+      }),
     }}>
-      {illustration.src ? (
-        <img {...illustration} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+      {illustration.src && web ? (
+        <img
+          src={web.src}
+          srcset={web.srcset}
+          sizes={web.srcset ? sizes : undefined}
+          alt={illustration.alt}
+          width={illustration.width}
+          height={illustration.height}
+          loading={eager ? 'eager' : 'lazy'}
+          fetchpriority={eager ? 'high' : undefined}
+          decoding="async"
+        />
       ) : (
-        <div class="panel-placeholder" role="img" aria-label={illustration.alt} style={`aspect-ratio: ${illustration.width} / ${illustration.height}`}></div>
+        <div class="panel-placeholder" role="img" aria-label={illustration.alt}></div>
       )}
       {panel.motion === 'drop' && <Drop />}
     </div>
@@ -44,7 +68,7 @@ const singleTextKind = panel.text.length === 1 ? panel.text[0].kind : undefined;
             {panel.text.map((line) => line.kind === 'dialogue' ? (
               <p class="speech"><span class="visually-hidden">{line.speaker}: </span>{line.text}</p>
             ) : (
-              <p class={line.kind === 'onomatopoeia' ? 'onomatopoeia' : 'speech'}>{line.text}</p>
+              <p class={line.kind === 'onomatopoeia' ? 'onomatopoeia' : 'caption-box'}>{line.text}</p>
             ))}
           </div>
         )}
@@ -56,7 +80,6 @@ const singleTextKind = panel.text.length === 1 ? panel.text[0].kind : undefined;
     {illustration.src && <a class="panel-enlarge" href={illustration.src} target="_blank" rel="noopener">Ampliar <span class="visually-hidden">viñeta {panel.id}</span></a>}
   </div>
   {panel.audio && <SceneAudio audio={panel.audio} />}
-  </div>
 </section>
 
 <script>

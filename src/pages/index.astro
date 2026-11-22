@@ -1,36 +1,63 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 import ChapterReader from '../components/reader/ChapterReader.astro';
+import ChapterOutro from '../components/reader/ChapterOutro.astro';
 import { chapters } from '../content/chapters';
+import { themeFor } from '../content/chapter-themes';
+import { webSources } from '../content/media';
 import '../styles/story.css';
+
+// La portada reutiliza dos viñetas existentes: el mundo remendado y la ciudad de la Orden.
+const patchSide = webSources('/comic/capitulo-1/V18.jpeg');
+const orderSide = webSources('/comic/capitulo-2/V3.png');
+const totalPanels = chapters.reduce((sum, chapter) => sum + chapter.rows.flat().length, 0);
 ---
 
 <SiteLayout title="Inicio" immersive>
-  <section class="shell cover" aria-labelledby="portada">
-    <div>
-      <h1 id="portada" class="cover-title">A Better Mess</h1>
-      <p class="intro">Entre chapas, puentes y tuberías, Los Desparchados han hecho hogar con lo que otros tiraron. Blund solo quiere pasar el día tranquilo.</p>
-      <a class="action" href="#relato">Desplázate para leer <span aria-hidden="true">↓</span></a>
+  <div class="reading-progress" data-reading-progress aria-hidden="true"><span></span></div>
+
+  <section class="cover" data-scroll-scene="cover" aria-labelledby="portada">
+    <div class="cover__stage">
+      <div class="cover__art" aria-hidden="true">
+        <div class="cover__side cover__side--patch">
+          <img src={patchSide.src} srcset={patchSide.srcset} sizes="100vw" alt="" width="1600" height="900" fetchpriority="high" decoding="async" />
+        </div>
+        <div class="cover__side cover__side--order">
+          <img src={orderSide.src} srcset={orderSide.srcset} sizes="100vw" alt="" width="1672" height="941" decoding="async" />
+        </div>
+      </div>
+
+      <div class="cover__content shell">
+        <p class="cover__kicker">Cómic digital episódico · {chapters.length} capítulos · {totalPanels} viñetas</p>
+        <h1 id="portada" class="cover-title">
+          <span class="cover-title__a">A Better</span>
+          <span class="cover-title__b">Mess</span>
+        </h1>
+        <p class="intro">Entre chapas, puentes y tuberías, Los Desparchados han hecho hogar con lo que otros tiraron. Blund solo quiere pasar el día tranquilo.</p>
+        <a class="action" href="#relato">Desplázate para leer <span aria-hidden="true">↓</span></a>
+      </div>
     </div>
   </section>
+
   <div id="relato" class="story" tabindex="-1" aria-label="Lectura completa">
     <nav class="story-nav" aria-label="Capítulos del relato">
       <span>Capítulos</span>
       <ol>
         {chapters.map((chapter) => (
-          <li><a href={`#${chapter.id}`} aria-label={`Capítulo ${chapter.number}. ${chapter.title}`} title={chapter.title}>{chapter.number}</a></li>
+          <li><a href={`#${chapter.id}`} style={`--accent: ${themeFor(chapter.id).accent}`} aria-label={`Capítulo ${chapter.number}. ${chapter.title}`} title={chapter.title}>{chapter.number}</a></li>
         ))}
       </ol>
     </nav>
-    {chapters.map((chapter, index) => <ChapterReader chapter={chapter} embedded eager={index === 0} />)}
-    <footer class="reader-end shell">
-      <p>Fin de los capítulos disponibles</p>
-      <a class="reader-back" href="#portada">Volver al comienzo</a>
-    </footer>
+    {chapters.map((chapter, index) => (
+      <>
+        <ChapterReader chapter={chapter} embedded eager={index === 0} />
+        <ChapterOutro chapter={chapter} next={chapters[index + 1]} />
+      </>
+    ))}
   </div>
 </SiteLayout>
 
 <script>
-  import { setupStoryMotion } from '../effects/story-motion';
-  setupStoryMotion();
+  import { setupScrollScenes } from '../effects/scroll-scenes';
+  setupScrollScenes();
 </script>

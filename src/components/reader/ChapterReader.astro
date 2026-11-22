@@ -1,6 +1,8 @@
 ---
 import type { Chapter } from '../../content/types';
+import { themeFor } from '../../content/chapter-themes';
 import PanelView from './PanelView.astro';
+import ChapterIntro from './ChapterIntro.astro';
 import '../../styles/reader.css';
 
 interface Props {
@@ -11,20 +13,21 @@ interface Props {
 
 const { chapter, embedded, eager = true } = Astro.props;
 const panels = chapter.rows.flat();
+const theme = themeFor(chapter.id);
 const Heading = embedded ? 'h2' : 'h1';
 const titleId = embedded ? `${chapter.id}-title` : 'chapter-title';
+const anchorFor = (id: string) => (embedded ? `${chapter.id}-${id}` : id);
 ---
 
-<article id={embedded ? chapter.id : undefined} class="chapter" tabindex={embedded ? -1 : undefined} aria-labelledby={titleId}>
-  <header class="chapter-header shell">
-    <div class="chapter-heading">
-      <div data-scroll-visual>
-        <p class="chapter-kicker">Capítulo {chapter.number}</p>
-        <Heading id={titleId}>{chapter.title}</Heading>
-        {!embedded && panels[0] && <a class="reader-back" href={`#${panels[0].id}`}>Bajar a la primera viñeta</a>}
-      </div>
-    </div>
-  </header>
+<article
+  id={embedded ? chapter.id : undefined}
+  class:list={['chapter', `chapter--${theme.style}`]}
+  data-chapter={chapter.id}
+  style={`--chapter-bg: ${theme.bg}; --accent: ${theme.accent}`}
+  tabindex={embedded ? -1 : undefined}
+  aria-labelledby={titleId}
+>
+  <ChapterIntro chapter={chapter} heading={Heading} titleId={titleId} firstPanelHref={panels[0] ? `#${anchorFor(panels[0].id)}` : undefined} />
 
   <div class:list={['reader-stage', 'shell', { 'reader-stage--indexed': !embedded }]}>
     {!embedded && (
@@ -40,7 +43,14 @@ const titleId = embedded ? `${chapter.id}-title` : 'chapter-title';
     <div class="panel-sequence">
       {chapter.rows.map((row, rowIndex) => (
         <div class:list={['panel-row', { 'panel-row--shared': row.length > 1 }]} style={`--columns: ${row.length}`}>
-          {row.map((panel, panelIndex) => <PanelView panel={panel} anchorId={embedded ? `${chapter.id}-${panel.id}` : panel.id} eager={eager && rowIndex === 0 && panelIndex === 0} />)}
+          {row.map((panel, panelIndex) => (
+            <PanelView
+              panel={panel}
+              anchorId={anchorFor(panel.id)}
+              eager={eager && rowIndex === 0 && panelIndex === 0}
+              order={panelIndex}
+            />
+          ))}
         </div>
       ))}
     </div>
@@ -50,6 +60,7 @@ const titleId = embedded ? `${chapter.id}-title` : 'chapter-title';
     <p>Fin del capítulo {chapter.number}</p>
     <div class="reader-end-links">
       <a class="reader-back" href={`#${titleId}`}>Volver al comienzo</a>
+      <a class="reader-back" href={`/#${chapter.id}`}>Leer en la historia completa</a>
       <a class="reader-back" href="/capitulos/">Volver a capítulos</a>
     </div>
   </footer>}

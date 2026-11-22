@@ -1,46 +1,65 @@
-@font-face {
-  font-family: 'Barlow Condensed';
-  src: url('/fonts/barlow-condensed-latin-700-normal.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* =========================================================
+   A BETTER MESS — Cómic digital
+   Interfaz oscura y neutra tipo sala de cine, para que el manga en
+   blanco y negro sea protagonista. El color llega por capítulo
+   (acento + fondo) y por dos lenguajes gráficos compartidos con la Wiki:
+   · Remendado (Los Desparchados): óxido, cinta, papel, stencil.
+   · Controlado (La Orden Blanca): blanco, azul frío, líneas finas, simetría.
+   ========================================================= */
+
+@font-face { font-family: 'Barlow Condensed'; src: url('/fonts/barlow-condensed-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Big Shoulders Stencil'; src: url('/fonts/big-shoulders-stencil-display-latin-900-normal.woff2') format('woff2'); font-weight: 900; font-display: swap; }
+@font-face { font-family: 'Special Elite'; src: url('/fonts/special-elite-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Barlow'; src: url('/fonts/barlow-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Barlow'; src: url('/fonts/barlow-latin-600-normal.woff2') format('woff2'); font-weight: 600; font-display: swap; }
 
 :root {
-  color-scheme: light;
-  --paper: #f4f4ef;
-  --ink: #1b1b19;
-  --muted: #555550;
-  --line: #b7b7af;
+  color-scheme: dark;
+  --paper: #0f0d0b;
+  --ink: #f1ece3;
+  --muted: #b5ada0;
+  --line: #3b352e;
+  --rust: #d2692f;
+  --rust-d: #8a3a16;
+  --sand: #efe5d3;
+  --order-white: #f5f7fa;
+  --order-blue: #8db6ec;
+  --active-accent: var(--rust);
   --gutter: clamp(1rem, 4vw, 3rem);
-  --display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  font-family: system-ui, sans-serif;
+  --display: 'Big Shoulders Stencil', 'Barlow Condensed', Impact, 'Arial Narrow', sans-serif;
+  --condensed: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --type: 'Special Elite', 'Courier New', monospace;
+  --body: 'Barlow', system-ui, sans-serif;
+  font: 400 1rem/1.55 var(--body);
   background: var(--paper);
   color: var(--ink);
+  -webkit-text-size-adjust: 100%;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; }
-.immersive {
-  color-scheme: dark;
-  --paper: #101010;
-  --ink: #f4f4f2;
-  --muted: #bcbcbc;
-  --line: #454545;
-  background: var(--paper);
-  color: var(--ink);
+body { margin: 0; background: var(--paper); overflow-x: clip; }
+
+/* Grano de papel muy suave en toda la página (no intercepta clics). */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+
 main { min-height: 65vh; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-underline-offset: 0.25em; }
-:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
-h1, p, figure { margin: 0; }
+:focus-visible { outline: 2px dashed var(--active-accent); outline-offset: 4px; }
+h1, h2, p, figure { margin: 0; }
 
 h1 {
   max-width: 19ch;
-  font-size: clamp(2.1rem, 6.5vw, 4.75rem);
-  line-height: 0.98;
-  letter-spacing: -0.055em;
+  font: 900 clamp(2.4rem, 7vw, 5rem)/0.92 var(--display);
+  text-transform: uppercase;
 }
 
 .visually-hidden, .skip-link:not(:focus) {
@@ -53,11 +72,12 @@ h1 {
 }
 
 .skip-link:focus {
-  position: absolute;
-  z-index: 1;
-  inset: 0 auto auto 0;
+  position: fixed;
+  z-index: 100;
+  inset: 0.5rem auto auto 0.5rem;
   padding: 0.7rem 1rem;
-  background: var(--paper);
+  background: var(--sand);
+  color: #1e1915;
 }
 
 .shell, .header-inner {
@@ -65,7 +85,19 @@ h1 {
   margin-inline: auto;
 }
 
-.site-header { border-bottom: 1px solid var(--line); }
+/* ---------- cabecera ---------- */
+.site-header {
+  position: relative;
+  z-index: 20;
+  border-bottom: 1px solid var(--line);
+}
+.immersive .site-header {
+  position: absolute;
+  inset: 0 0 auto;
+  border-bottom: 0;
+  background: linear-gradient(to bottom, rgb(0 0 0 / 0.65), transparent);
+}
+
 .header-inner {
   display: flex;
   align-items: center;
@@ -74,63 +106,79 @@ h1 {
   min-height: 3.75rem;
 }
 
-.wordmark { font-size: 0.85rem; font-weight: 900; letter-spacing: -0.035em; text-decoration: none; }
-.site-header nav { display: flex; gap: clamp(0.75rem, 3vw, 1.75rem); font-size: 0.875rem; }
-.site-header nav a { padding-block: 0.75rem; text-decoration: none; }
-.site-header nav a:hover, .site-header nav [aria-current] { text-decoration: underline; }
-.site-footer { border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--muted); }
-
-.eyebrow {
-  font-family: ui-monospace, monospace;
-  font-size: 0.77rem;
-  font-weight: 650;
-  letter-spacing: 0.07em;
+.wordmark {
+  font: 900 1.15rem/1 var(--display);
+  letter-spacing: 0.02em;
+  text-decoration: none;
   text-transform: uppercase;
 }
+.site-header nav { display: flex; gap: clamp(0.25rem, 2vw, 1rem); font: 700 0.95rem/1 var(--condensed); letter-spacing: 0.06em; text-transform: uppercase; }
+.site-header nav a { display: inline-flex; align-items: center; min-height: 2.75rem; padding-inline: 0.5rem; text-decoration: none; }
+.site-header nav a:hover, .site-header nav [aria-current] { box-shadow: inset 0 -2px var(--active-accent); }
 
-.eyebrow { margin-bottom: 1rem; color: var(--muted); }
-.cover {
+.site-footer { border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--muted); }
+.site-footer .header-inner { font-family: var(--type); }
+
+.eyebrow {
+  margin-bottom: 1rem;
+  font: 400 0.8rem/1.3 var(--type);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--active-accent);
+}
+
+/* ---------- índice de capítulos ---------- */
+.chapter-index { padding-block: clamp(6rem, 14vw, 9rem) clamp(3rem, 8vw, 6rem); }
+.chapter-index__lead { max-width: 52ch; margin-top: 1rem; color: var(--muted); }
+.chapter-list {
   display: grid;
-  place-items: center;
-  min-block-size: 76svh;
-  padding-block: 3rem;
-  text-align: center;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
 }
+@media (min-width: 48rem) { .chapter-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-.cover-title {
-  max-width: none;
-  font-family: var(--display);
-  font-size: clamp(3.5rem, 12vw, 9.5rem);
-  line-height: 0.9;
-  letter-spacing: -0.015em;
-  text-wrap: balance;
-}
-.intro { max-width: 37ch; margin: 1.5rem auto 0; color: var(--muted); line-height: 1.6; }
-.action {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.75rem;
-  gap: 0.55rem;
-  margin-top: 2rem;
-  font-weight: 650;
-}
-
-.action:hover { color: var(--muted); }
-
-.chapter-index { padding-block: clamp(2.5rem, 8vw, 6rem); }
-.chapter-list { padding: 0; margin: 2rem 0 0; list-style: none; }
-.chapter-list a {
+.chapter-card a {
+  position: relative;
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: clamp(0.8rem, 3vw, 2rem);
-  padding: 1.25rem 0.25rem;
-  border-block: 1px solid var(--line);
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  min-height: 15rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  background: var(--card-bg);
   text-decoration: none;
+  isolation: isolate;
 }
+.chapter-card img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  transition: transform 0.6s cubic-bezier(.2, .7, .2, 1), opacity 0.4s;
+}
+.chapter-card a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, var(--card-bg) 15%, color-mix(in srgb, var(--card-bg) 30%, transparent));
+}
+.chapter-card a:hover img, .chapter-card a:focus-visible img { transform: scale(1.05); opacity: 0.75; }
+.chapter-card__body { display: grid; gap: 0.3rem; padding: 1.25rem; }
+.chapter-card .chapter-number { font: 900 3.25rem/0.8 var(--display); color: var(--accent); }
+.chapter-card__tag { font: 400 0.75rem/1 var(--type); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.chapter-card strong { font: 700 clamp(1.35rem, 2.5vw, 1.75rem)/1.05 var(--condensed); text-transform: uppercase; }
+.chapter-card small { color: var(--muted); }
+.chapter-arrow { padding: 1.25rem; font-size: 1.5rem; color: var(--accent); transition: translate 0.3s; }
+.chapter-card a:hover .chapter-arrow { translate: 0.3rem 0; }
+.chapter-card--order a { border-radius: 2px; }
+.chapter-card--patch a, .chapter-card--mixed a { box-shadow: 5px 5px 0 color-mix(in srgb, var(--accent) 35%, transparent); }
 
-.chapter-list a:hover strong { text-decoration: underline; }
-.chapter-list strong { font-size: clamp(1rem, 3vw, 1.6rem); }
-.chapter-list small { display: block; margin-top: 0.25rem; color: var(--muted); }
-.chapter-number, .chapter-arrow { font-family: ui-monospace, monospace; font-size: 1.25rem; }
-
+@media (prefers-reduced-motion: reduce) {
+  .chapter-card img, .chapter-arrow { transition: none; }
+}

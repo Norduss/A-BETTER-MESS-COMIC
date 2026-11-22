@@ -1,0 +1,43 @@
+---
+import type { Chapter } from '../../content/types';
+import { themeFor } from '../../content/chapter-themes';
+
+interface Props {
+  chapter: Chapter;
+  next?: Chapter;
+}
+
+const { chapter, next } = Astro.props;
+const from = themeFor(chapter.id);
+const to = next ? themeFor(next.id) : undefined;
+---
+
+<section
+  class:list={['ch-outro', { 'ch-outro--final': !next }, to && `ch-outro--to-${to.style}`]}
+  data-scroll-scene="outro"
+  style={`--from: ${from.bg}; --to: ${to?.bg ?? '#0b0a09'}; --from-accent: ${from.accent}; --to-accent: ${to?.accent ?? from.accent}`}
+  aria-label={next ? `Fin del capítulo ${chapter.number}. A continuación, capítulo ${next.number}` : 'Fin de los capítulos disponibles'}
+>
+  <div class="ch-outro__stage">
+    <div class="ch-outro__end">
+      <p class="ch-outro__label">Fin del capítulo</p>
+      <p class="ch-outro__number">{chapter.number}</p>
+    </div>
+    <span class="ch-outro__line" aria-hidden="true"></span>
+    {next ? (
+      <a class="ch-outro__next" href={`#${next.id}`}>
+        <span class="ch-outro__label">A continuación · Capítulo {next.number}</span>
+        <span class="ch-outro__title">{next.title}</span>
+      </a>
+    ) : (
+      <div class="ch-outro__next">
+        <span class="ch-outro__label">Fin de los capítulos disponibles</span>
+        <span class="ch-outro__title">La historia continúa</span>
+        <span class="ch-outro__links">
+          <a href="#portada">Volver al comienzo</a>
+          <a href="/capitulos/">Ver capítulos</a>
+        </span>
+      </div>
+    )}
+  </div>
+</section>
