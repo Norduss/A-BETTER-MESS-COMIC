@@ -1,0 +1,77 @@
+.story {
+  --chapter-glow: #232323;
+  position: relative;
+  padding-top: 0.5rem;
+}
+
+.story-nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: min(calc(100% - 2rem), 27rem);
+  margin-inline: auto;
+  padding: 0.4rem 0.5rem 0.4rem 1rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 2rem;
+}
+
+.story-nav > span { color: var(--muted); font-size: 0.8125rem; }
+.story-nav ol { display: flex; flex-wrap: wrap; gap: 0.15rem; margin: 0; padding: 0; list-style: none; }
+.story-nav a {
+  display: grid;
+  place-items: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.story-nav a:hover, .story-nav a[aria-current] { background: var(--ink); color: var(--paper); }
+.story-nav a:focus-visible { outline-offset: -3px; }
+.story .chapter { scroll-margin-top: 4.5rem; }
+.story .chapter-header {
+  position: relative;
+  min-block-size: 72svh;
+  padding-block: 4rem;
+  isolation: isolate;
+}
+
+.story .chapter-header::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 8% 0;
+  background: radial-gradient(ellipse at center, var(--chapter-glow), transparent 68%);
+}
+
+.story .chapter + .chapter { margin-block-start: clamp(4rem, 12vh, 9rem); }
+.story .panel { scroll-margin-top: 5rem; }
+.story .panel-sequence { gap: clamp(2.75rem, 7vh, 5.5rem); }
+.story .panel--panorama { margin-block: clamp(0.75rem, 3vh, 2rem); }
+.story .chapter-heading { max-width: 100%; }
+.story .chapter-heading h2 { font-size: clamp(2.5rem, 7vw, 6.5rem); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .story[data-scroll-active] [data-scroll-visual] {
+    opacity: var(--scroll-visibility, 1);
+    transform: translateY(calc(var(--scroll-offset, 0) * 1px)) scale(calc(0.985 + var(--scroll-visibility, 1) * 0.015));
+  }
+
+  .story .panel:focus-within [data-scroll-visual],
+  .story .chapter-heading:focus-within [data-scroll-visual] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (min-width: 48rem) {
+  .story-nav { top: 1rem; }
+  .story .chapter-header { min-block-size: 82svh; }
+}

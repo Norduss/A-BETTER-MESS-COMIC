@@ -8,6 +8,7 @@ export default {
     [
       {
         "id": "V1",
+        "depth": true,
         "label": "La operación de Limpieza",
         "kind": "panorama",
         "illustration": {
@@ -242,6 +243,7 @@ export default {
     [
       {
         "id": "V14",
+        "depth": true,
         "label": "La transformación del territorio",
         "kind": "panorama",
         "illustration": {

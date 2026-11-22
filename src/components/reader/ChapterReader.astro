@@ -6,21 +6,25 @@ import '../../styles/reader.css';
 interface Props {
   chapter: Chapter;
   embedded?: boolean;
+  eager?: boolean;
 }
 
-const { chapter, embedded } = Astro.props;
+const { chapter, embedded, eager = true } = Astro.props;
 const panels = chapter.rows.flat();
+const Heading = embedded ? 'h2' : 'h1';
+const titleId = embedded ? `${chapter.id}-title` : 'chapter-title';
 ---
 
-<article id={embedded ? 'relato' : undefined} class="chapter" tabindex={embedded ? -1 : undefined}
-  aria-label={embedded ? chapter.title : undefined} aria-labelledby={embedded ? undefined : 'chapter-title'}>
-  {!embedded && (
-    <header class="chapter-header shell">
-      <p class="chapter-kicker">Acontecimiento {chapter.number}</p>
-      <h1 id="chapter-title">{chapter.title}</h1>
-      {panels[0] && <a class="reader-back" href={`#${panels[0].id}`}>Bajar a la primera viñeta</a>}
-    </header>
-  )}
+<article id={embedded ? chapter.id : undefined} class="chapter" tabindex={embedded ? -1 : undefined} aria-labelledby={titleId}>
+  <header class="chapter-header shell">
+    <div class="chapter-heading">
+      <div data-scroll-visual>
+        <p class="chapter-kicker">Capítulo {chapter.number}</p>
+        <Heading id={titleId}>{chapter.title}</Heading>
+        {!embedded && panels[0] && <a class="reader-back" href={`#${panels[0].id}`}>Bajar a la primera viñeta</a>}
+      </div>
+    </div>
+  </header>
 
   <div class:list={['reader-stage', 'shell', { 'reader-stage--indexed': !embedded }]}>
     {!embedded && (
@@ -36,17 +40,17 @@ const panels = chapter.rows.flat();
     <div class="panel-sequence">
       {chapter.rows.map((row, rowIndex) => (
         <div class:list={['panel-row', { 'panel-row--shared': row.length > 1 }]} style={`--columns: ${row.length}`}>
-          {row.map((panel, panelIndex) => <PanelView panel={panel} eager={rowIndex === 0 && panelIndex === 0} />)}
+          {row.map((panel, panelIndex) => <PanelView panel={panel} anchorId={embedded ? `${chapter.id}-${panel.id}` : panel.id} eager={eager && rowIndex === 0 && panelIndex === 0} />)}
         </div>
       ))}
     </div>
   </div>
 
-  <footer class="reader-end shell">
+  {!embedded && <footer class="reader-end shell">
     <p>Fin del capítulo {chapter.number}</p>
     <div class="reader-end-links">
-      <a class="reader-back" href={embedded ? '#portada' : '#chapter-title'}>Volver al comienzo</a>
-      {!embedded && <a class="reader-back" href="/capitulos/">Volver a capítulos</a>}
+      <a class="reader-back" href={`#${titleId}`}>Volver al comienzo</a>
+      <a class="reader-back" href="/capitulos/">Volver a capítulos</a>
     </div>
-  </footer>
+  </footer>}
 </article>

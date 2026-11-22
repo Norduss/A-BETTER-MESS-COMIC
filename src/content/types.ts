@@ -17,6 +17,7 @@ export interface Panel {
   framing?: 'detail';
   illustration: Illustration;
   parallax?: { position: string; mobilePosition: string };
+  depth?: boolean;
   text: readonly PanelText[];
   textInImage?: boolean;
   motion?: 'drop';

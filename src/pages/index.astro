@@ -1,7 +1,8 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 import ChapterReader from '../components/reader/ChapterReader.astro';
-import sample from '../content/chapters/acontecimiento-1';
+import { chapters } from '../content/chapters';
+import '../styles/story.css';
 ---
 
 <SiteLayout title="Inicio" immersive>
@@ -12,5 +13,24 @@ import sample from '../content/chapters/acontecimiento-1';
       <a class="action" href="#relato">Desplázate para leer <span aria-hidden="true">↓</span></a>
     </div>
   </section>
-  <ChapterReader chapter={sample} embedded />
+  <div id="relato" class="story" tabindex="-1" aria-label="Lectura completa">
+    <nav class="story-nav" aria-label="Capítulos del relato">
+      <span>Capítulos</span>
+      <ol>
+        {chapters.map((chapter) => (
+          <li><a href={`#${chapter.id}`} aria-label={`Capítulo ${chapter.number}. ${chapter.title}`} title={chapter.title}>{chapter.number}</a></li>
+        ))}
+      </ol>
+    </nav>
+    {chapters.map((chapter, index) => <ChapterReader chapter={chapter} embedded eager={index === 0} />)}
+    <footer class="reader-end shell">
+      <p>Fin de los capítulos disponibles</p>
+      <a class="reader-back" href="#portada">Volver al comienzo</a>
+    </footer>
+  </div>
 </SiteLayout>
+
+<script>
+  import { setupStoryMotion } from '../effects/story-motion';
+  setupStoryMotion();
+</script>

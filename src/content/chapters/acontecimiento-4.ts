@@ -8,6 +8,7 @@ export default {
     [
       {
         "id": "V1",
+        "depth": true,
         "label": "El taller de Los Desparchados",
         "kind": "panorama",
         "illustration": {
@@ -347,6 +348,7 @@ export default {
     [
       {
         "id": "V17",
+        "depth": true,
         "label": "La Limpieza continúa",
         "kind": "panorama",
         "illustration": {

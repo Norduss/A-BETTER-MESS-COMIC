@@ -8,6 +8,7 @@ export default {
     [
       {
         "id": "V1",
+        "depth": true,
         "label": "Los Desparchados",
         "kind": "panorama",
         "illustration": {
@@ -347,6 +348,7 @@ export default {
     [
       {
         "id": "V18",
+        "depth": true,
         "label": "Hogar",
         "kind": "panorama",
         "illustration": {

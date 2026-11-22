@@ -18,12 +18,18 @@
 
 .chapter-kicker, .panel-label, .reader-end { color: var(--muted); }
 
-.chapter-header h1 {
+.chapter-heading h1, .chapter-heading h2 {
+  margin: 0;
   max-inline-size: 18ch;
   font: 700 clamp(2.625rem, 7.2vw, 6.25rem)/0.94 var(--display);
   letter-spacing: -0.015em;
   text-wrap: balance;
 }
+
+.chapter-kicker { margin-bottom: 0.9rem; font-size: 0.875rem; }
+.panel-meta { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0 1rem; margin-top: 0.5rem; }
+.panel-meta .panel-label { margin-top: 0; justify-content: start; font-size: 0.75rem; }
+.panel-meta .panel-enlarge { font-size: 0.75rem; }
 
 .reader-stage { display: grid; gap: 1.25rem; }
 .scene-nav ul {
@@ -131,6 +137,9 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .panel-art[data-depth] {
+    transform: translateY(calc(var(--parallax-progress, 0) * var(--depth-distance, 12px)));
+  }
   .panel-art[data-parallax] img {
     /* Leave room at both edges for the relative travel inside the frame. */
     transform: translateY(calc(var(--parallax-progress, 0) * var(--parallax-distance, 5%))) scale(1.12);
@@ -147,6 +156,7 @@
 }
 
 @media (min-width: 48rem) {
+  .panel-art[data-depth] { --depth-distance: 22px; }
   .reader-stage--indexed { grid-template-columns: minmax(0, 1fr) auto; gap: var(--gutter); }
   .scene-nav { position: sticky; top: 1.25rem; max-height: calc(100svh - 2.5rem); overflow-y: auto; grid-area: 1 / 2; align-self: start; }
   .scene-nav ul { flex-direction: column; }

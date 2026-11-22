@@ -1,5 +1,5 @@
 export function setupParallax() {
-  const frames = document.querySelectorAll<HTMLElement>('[data-parallax]');
+  const frames = document.querySelectorAll<HTMLElement>('[data-parallax], [data-depth]');
   if (!frames.length) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
