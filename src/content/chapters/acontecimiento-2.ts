@@ -31,7 +31,19 @@ export default {
           "width": 1672,
           "height": 941
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Puff",
+            "text": "Oye, Blund... ¿eso de allá siempre estuvo ahí?"
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "Si no está haciendo ruido aquí, no es problema mío."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -45,7 +57,13 @@ export default {
           "width": 1774,
           "height": 887
         },
-        "text": []
+        "text": [
+          {
+            "kind": "caption",
+            "text": "Más allá de los territorios contaminados, una civilización había construido una forma muy diferente de entender el progreso."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -73,7 +91,13 @@ export default {
           "width": 1672,
           "height": 941
         },
-        "text": []
+        "text": [
+          {
+            "kind": "caption",
+            "text": "Para ellos, restaurar el planeta significaba recuperar aquello que generaciones de contaminación habían transformado."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -101,7 +125,21 @@ export default {
           "width": 1672,
           "height": 941
         },
-        "text": []
+        "text": [
+          {
+            "kind": "caption",
+            "text": "ANÁLISIS AMBIENTAL"
+          },
+          {
+            "kind": "caption",
+            "text": "SECTORES DE INTERVENCIÓN"
+          },
+          {
+            "kind": "caption",
+            "text": "RIESGO ESTRUCTURAL"
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -185,7 +223,19 @@ export default {
           "width": 1672,
           "height": 941
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Puff",
+            "text": "Parece que están limpiando todo ese sector."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "¿Todo? Qué manera tan complicada de pasar el día."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -199,7 +249,24 @@ export default {
           "width": 1672,
           "height": 941
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "Mientras no se metan con mi rincón, que limpien lo que quieran."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Puff",
+            "text": "¿Y si tu rincón también está en sus planes?"
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "...Pues espero que tengan otros planes."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [

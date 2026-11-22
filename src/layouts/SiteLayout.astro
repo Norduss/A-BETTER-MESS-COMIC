@@ -34,11 +34,36 @@ const atHome = Astro.url.pathname === '/';
     <main id="contenido" tabindex="-1">
       <slot />
     </main>
-    <footer class="site-footer">
-      <div class="header-inner">
-        <span>A Better Mess</span>
-        <span>Cómic de lectura vertical continua</span>
-        <a href="https://a-better-mess-wiki.vercel.app/">Ir a la wiki</a>
+    <footer id="creditos" class="site-footer">
+      <div class="shell footer-content">
+        <div class="footer-main">
+          <div class="footer-about">
+            <a class="footer-brand" href="/">A Better Mess</a>
+            <p>Cómic de lectura vertical continua</p>
+          </div>
+          <a class="footer-wiki" href="https://a-better-mess-wiki.vercel.app/">
+            Ir a la wiki
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M7 7h10v10" /></svg>
+          </a>
+        </div>
+        <section class="footer-team" aria-labelledby="equipo">
+          <h2 id="equipo">Equipo</h2>
+          <dl>
+            <div>
+              <dt>Historia y creación</dt>
+              <dd>Steven Camilo Franco Bocanegra</dd>
+            </div>
+            <div>
+              <dt>Cómic</dt>
+              <dd><span>Steven Camilo Franco Bocanegra</span><span>Juan Andrés Escobar Castillo</span></dd>
+            </div>
+            <div>
+              <dt>Wiki</dt>
+              <dd><span>Santiago Peña Agudelo</span><span>Alejandro Arias Ramírez</span></dd>
+            </div>
+          </dl>
+        </section>
+        <p class="footer-note">Diseño Transmedia · Prototipo 2026</p>
       </div>
     </footer>
   </body>

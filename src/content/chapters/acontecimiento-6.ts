@@ -3,7 +3,7 @@ import type { Chapter } from '../types';
 export default {
   "id": "acontecimiento-6",
   "number": "06",
-  "title": "Cap 6",
+  "title": "Cuestionamiento",
   "rows": [
     [
       {
@@ -30,7 +30,19 @@ export default {
           "width": 1672,
           "height": 941
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Puff",
+            "text": "Llevas rato mirando todo como si fuera nuevo."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "Es lo mismo de siempre... creo."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -58,7 +70,13 @@ export default {
           "width": 1448,
           "height": 1086
         },
-        "text": []
+        "text": [
+          {
+            "kind": "onomatopoeia",
+            "text": "PLOC"
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -86,7 +104,19 @@ export default {
           "width": 1448,
           "height": 1086
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "Creo que el balde nunca arregló la tubería."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Puff",
+            "text": "No. Pero mira, ya somos dos los que lo sabemos."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -156,7 +186,19 @@ export default {
           "width": 1448,
           "height": 1086
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "Hay cosas que sí necesitaban arreglarse..."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Puff",
+            "text": "Y otras que no podían quitar como si no significaran nada."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -170,7 +212,19 @@ export default {
           "width": 1536,
           "height": 1024
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Puff",
+            "text": "Entonces... ¿qué es lo que más te preocupa?"
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "Que antes todo esto me daba igual."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -184,7 +238,14 @@ export default {
           "width": 1536,
           "height": 1024
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "Yo solo quería que me dejaran tranquilo..."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [

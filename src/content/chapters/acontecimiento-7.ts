@@ -3,7 +3,7 @@ import type { Chapter } from '../types';
 export default {
   "id": "acontecimiento-7",
   "number": "07",
-  "title": "Cap 7",
+  "title": "Decisión futura",
   "rows": [
     [
       {
@@ -30,7 +30,19 @@ export default {
           "width": 1536,
           "height": 1024
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "Creo que debería escuchar qué está pasando por allá."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Puff",
+            "text": "Eso suena bastante diferente a querer dormir todo el día."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -44,7 +56,14 @@ export default {
           "width": 1536,
           "height": 1024
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Bróko",
+            "text": "Aquí no solo hay materiales viejos. Hay cosas que todavía usamos todos los días."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -100,7 +119,19 @@ export default {
           "width": 1536,
           "height": 1024
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "Entonces sí hay cosas que necesitamos cambiar."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Puff",
+            "text": "Y eso no significa que tengamos que perder todo lo demás."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -128,7 +159,14 @@ export default {
           "width": 1536,
           "height": 1024
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Latón",
+            "text": "Lo importante es que no decidan sobre este lugar como si aquí no viviera nadie."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -156,7 +194,19 @@ export default {
           "width": 1536,
           "height": 1024
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Explorador de la Orden Blanca",
+            "text": "Necesitamos revisar las condiciones de esta estructura."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Latón",
+            "text": "Y nosotros necesitamos que entiendan para qué la usamos."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -184,7 +234,14 @@ export default {
           "width": 1448,
           "height": 1086
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "Si todos conocen una parte del problema... alguien tiene que empezar a escucharlos."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -198,7 +255,19 @@ export default {
           "width": 1448,
           "height": 1086
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "No sé cómo se arregla todo esto... pero ya no quiero quedarme mirando."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Puff",
+            "text": "Bueno, eso sí que no me lo esperaba."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -212,7 +281,14 @@ export default {
           "width": 1448,
           "height": 1086
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "Oigan... quiero ayudar a entender qué podemos hacer con todo esto."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -240,7 +316,14 @@ export default {
           "width": 1536,
           "height": 1024
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "Entiendo que quieran arreglar lo que está mal... pero nosotros también tenemos algo que decir."
+          }
+        ],
+        "textInImage": true
       }
     ]
   ]

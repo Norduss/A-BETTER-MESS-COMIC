@@ -3,7 +3,7 @@ import type { Chapter } from '../types';
 export default {
   "id": "acontecimiento-5",
   "number": "05",
-  "title": "Cap 5",
+  "title": "Dos formas de entender un mundo mejor",
   "rows": [
     [
       {
@@ -58,7 +58,14 @@ export default {
           "width": 1672,
           "height": 941
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Habitante de Los Desparchados",
+            "text": "Para ellos esto es chatarra. Para nosotros es lo que hemos construido."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -72,7 +79,14 @@ export default {
           "width": 1672,
           "height": 941
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Otro habitante",
+            "text": "Sí, pero tampoco podemos fingir que todo lo que construimos es seguro."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -100,7 +114,19 @@ export default {
           "width": 1448,
           "height": 1086
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Puff",
+            "text": "Parece que aquí tampoco todos piensan lo mismo."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "Genial. Ahora hasta ponerse de acuerdo da trabajo."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -142,7 +168,19 @@ export default {
           "width": 1672,
           "height": 941
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Explorador de la Orden Blanca",
+            "text": "Esta estructura presenta condiciones de riesgo."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Habitante de Los Desparchados",
+            "text": "También es la que usamos todos los días."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -156,7 +194,19 @@ export default {
           "width": 1672,
           "height": 941
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Explorador de la Orden Blanca",
+            "text": "Queremos evitar que estas condiciones sigan poniendo en riesgo a sus habitantes."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Habitante de Los Desparchados",
+            "text": "Entonces deberían preguntarnos qué estamos intentando conservar."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -184,7 +234,14 @@ export default {
           "width": 1672,
           "height": 941
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "O sea... arreglar las cosas también puede dañarlas."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
@@ -198,7 +255,19 @@ export default {
           "width": 1671,
           "height": 941
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Puff",
+            "text": "Y dejarlo todo igual tampoco arregla lo que está mal."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Blund",
+            "text": "Qué complicado resultó esto de tener una opinión."
+          }
+        ],
+        "textInImage": true
       }
     ],
     [
