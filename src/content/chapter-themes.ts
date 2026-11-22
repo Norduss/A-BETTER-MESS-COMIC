@@ -24,6 +24,8 @@ export const chapterThemes: Record<string, ChapterTheme> = {
   'acontecimiento-3': { style: 'order', tag: 'La Limpieza', backdrop: 'V1', bg: '#0f1719', accent: '#9dd3c8' },
   'acontecimiento-4': { style: 'mixed', tag: 'La frontera', backdrop: 'V1', bg: '#17120f', accent: '#e0a33a' },
   'acontecimiento-5': { style: 'mixed', tag: 'A Better Mess', backdrop: 'V1', bg: '#17120f', accent: '#e0a33a' },
+  'acontecimiento-6': { style: 'patch', tag: 'A Better Mess', backdrop: 'V1', bg: '#16110d', accent: '#d2692f' },
+  'acontecimiento-7': { style: 'mixed', tag: 'A Better Mess', backdrop: 'V1', bg: '#17120f', accent: '#e0a33a' },
 };
 
 const fallback: ChapterTheme = { style: 'patch', tag: 'A Better Mess', backdrop: 'V1', bg: '#121110', accent: '#d2692f' };
