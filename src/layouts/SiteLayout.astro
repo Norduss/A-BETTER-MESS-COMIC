@@ -29,6 +29,7 @@ const atHome = Astro.url.pathname === '/';
         <nav aria-label="Principal">
           <a href="/" aria-current={atHome ? 'page' : undefined}>Inicio</a>
           <a href="/capitulos/" aria-current={Astro.url.pathname === '/capitulos/' ? 'page' : undefined}>Capítulos</a>
+          <a href="/proyecto/" aria-current={Astro.url.pathname === '/proyecto/' ? 'page' : undefined}>Proyecto</a>
         </nav>
       </div>
     </header>

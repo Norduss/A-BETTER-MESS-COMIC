@@ -1,0 +1,180 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { chapters } from '../content/chapters';
+import { webSources } from '../content/media';
+import '../styles/project.css';
+
+const art = webSources('/comic/capitulo-1/V18.jpeg');
+const totalPanels = chapters.reduce((sum, chapter) => sum + chapter.rows.flat().length, 0);
+const sections = [
+  ['presentacion', 'Presentación'],
+  ['plataformas', 'Plataformas'],
+  ['lectura', 'Cómo leer'],
+  ['desarrollo', 'Estado del proyecto'],
+  ['autoria', 'Autoría y recursos'],
+];
+---
+
+<SiteLayout title="El proyecto">
+  <div class="project-page">
+    <header class="shell project-hero">
+      <div class="project-hero__copy">
+        <p class="eyebrow">El proyecto</p>
+        <h1>A Better Mess</h1>
+        <p class="project-hero__lead">Un mundo donde la basura también tiene valor</p>
+        <p class="project-hero__format"><strong>Plataforma principal:</strong> Cómic digital episódico interactivo.</p>
+        <a class="project-link" href="/#relato">Leer el cómic digital</a>
+      </div>
+      <figure class="project-hero__art">
+        <img src={art.src} srcset={art.srcset} sizes="(min-width: 64rem) 45vw, 100vw" alt="Blund y Puff contemplan las viviendas, pasarelas y tuberías de Los Desparchados." width="1600" height="900" decoding="async" />
+        <figcaption>El mundo de Los Desparchados</figcaption>
+      </figure>
+    </header>
+
+    <div class="shell project-body">
+      <aside class="project-index">
+        <nav aria-label="Contenido del proyecto">
+          <p>En esta página</p>
+          <ul>{sections.map(([id, label]) => <li><a href={`#${id}`}>{label}</a></li>)}</ul>
+        </nav>
+      </aside>
+
+      <div class="project-sections">
+        <section id="presentacion" class="project-section" aria-labelledby="presentacion-titulo">
+          <h2 id="presentacion-titulo">Presentación del proyecto</h2>
+          <p><strong>A Better Mess</strong> es un proyecto narrativo transmedia que presenta un mundo donde la contaminación y la acumulación de residuos han dado origen a nuevas formas de vida y comunidades.</p>
+          <p>La historia sigue a Blund y Puff, dos habitantes de Los Desparchados, un territorio donde los materiales desechados se transforman en viviendas, herramientas y tecnologías que hacen parte de la identidad de sus habitantes.</p>
+          <p>Su cotidianidad comienza a cambiar con la llegada de La Orden Blanca, una civilización tecnológicamente avanzada que busca restaurar el planeta mediante un proceso conocido como La Limpieza.</p>
+          <p>Aunque estas intervenciones generan mejoras ambientales, también ponen en riesgo elementos fundamentales para las comunidades que habitan los territorios intervenidos.</p>
+          <p>A través de este conflicto, A Better Mess explora las tensiones entre el progreso, la sostenibilidad, la identidad cultural y las diferentes maneras de entender qué significa construir un mundo mejor.</p>
+          <h3>Nuestra experiencia narrativa</h3>
+          <p>La historia se desarrolla principalmente mediante un cómic digital con estética manga en blanco y negro, lectura vertical y composiciones que combinan viñetas tradicionales con panorámicas inmersivas.</p>
+          <p>El proyecto también cuenta con una Wiki interactiva que complementa la experiencia y permite profundizar en el universo narrativo.</p>
+        </section>
+
+        <section id="plataformas" class="project-section" aria-labelledby="plataformas-titulo">
+          <p class="project-section__label">Primera versión de la plataforma</p>
+          <h2 id="plataformas-titulo">Explora el universo de A Better Mess</h2>
+          <p>El proyecto cuenta con dos experiencias digitales complementarias, desarrolladas para presentar diferentes aspectos del mismo universo.</p>
+          <div class="project-platforms">
+            <article class="project-platform project-platform--comic">
+              <h3>Cómic digital <span>Plataforma principal</span></h3>
+              <p>El cómic constituye el eje central de la narrativa de A Better Mess.</p>
+              <p>A través de sus capítulos, el lector conoce a los protagonistas, descubre las características de Los Desparchados y presencia el desarrollo del conflicto con La Orden Blanca.</p>
+              <p>La propuesta visual combina ilustraciones manga en blanco y negro, escenarios detallados y una lectura diseñada para aprovechar el desplazamiento vertical.</p>
+              <a class="project-link" href="/#relato">Leer el cómic digital</a>
+            </article>
+            <article class="project-platform project-platform--wiki">
+              <h3>Wiki interactiva <span>Plataforma complementaria</span></h3>
+              <p>La Wiki amplía la información del universo de A Better Mess mediante contenidos relacionados con sus personajes, comunidades y otros elementos narrativos.</p>
+              <p>Esta plataforma funciona como un espacio de exploración complementario, permitiendo que la audiencia conozca aspectos del mundo más allá de los acontecimientos desarrollados en el cómic.</p>
+              <a class="project-link project-link--outline" href="https://a-better-mess-wiki.vercel.app/">Explorar la wiki</a>
+            </article>
+          </div>
+          <p>Ambas plataformas forman parte de una misma propuesta transmedia: el cómic permite vivir la historia y la Wiki ofrece una oportunidad para profundizar en su universo.</p>
+        </section>
+
+        <section id="lectura" class="project-section" aria-labelledby="lectura-titulo">
+          <p class="project-section__label">Instrucciones de acceso</p>
+          <h2 id="lectura-titulo">¿Cómo experimentar A Better Mess?</h2>
+          <ol class="project-steps">
+            <li>
+              <h3>Comienza por el cómic</h3>
+              <p>Ingresa a la plataforma principal y accede al contenido narrativo disponible.</p>
+              <p>La lectura está diseñada para avanzar mediante desplazamiento vertical. En las composiciones que contienen varias viñetas, sigue el orden de lectura de izquierda a derecha.</p>
+            </li>
+            <li>
+              <h3>Recorre la historia</h3>
+              <p>Explora las ilustraciones, los diálogos y las panorámicas que presentan el mundo de Los Desparchados, sus personajes y el conflicto central.</p>
+              <p>El cómic está concebido para comprenderse sin necesidad de consultar previamente contenidos adicionales.</p>
+            </li>
+            <li>
+              <h3>Amplía tu experiencia con la Wiki</h3>
+              <p>Después de conocer la historia, puedes visitar la Wiki interactiva para descubrir información complementaria sobre los personajes y el universo de A Better Mess.</p>
+            </li>
+          </ol>
+          <p class="project-note"><strong>Recomendación:</strong> para apreciar mejor los detalles de las ilustraciones, utiliza una pantalla que permita visualizar cómodamente las composiciones del cómic.</p>
+        </section>
+
+        <section id="desarrollo" class="project-section" aria-labelledby="desarrollo-titulo">
+          <p class="project-section__label">Estado de desarrollo</p>
+          <h2 id="desarrollo-titulo">¿En qué etapa se encuentra el proyecto?</h2>
+          <p>A Better Mess cuenta con una primera etapa de desarrollo narrativo, visual y digital realizada durante el curso.</p>
+          <h3>Componentes desarrollados</h3>
+          <ul class="project-resources">
+            <li><strong>Universo narrativo:</strong> concepto original, construcción del mundo, personajes, comunidades y conflicto central.</li>
+            <li><strong>Biblia transmedia:</strong> documentación de los fundamentos narrativos y las posibilidades de expansión del proyecto.</li>
+            <li><strong>Diseños de personajes:</strong> referencias visuales originales utilizadas para conservar la identidad de los protagonistas y demás habitantes del universo.</li>
+            <li><strong>Cómic digital:</strong> tratamientos narrativos, guiones, planificación de viñetas e ilustraciones desarrolladas para diferentes capítulos.</li>
+            <li><strong>Wiki interactiva:</strong> plataforma web complementaria desarrollada para ampliar la exploración del universo.</li>
+            <li><strong>Material promocional:</strong> teaser y recursos audiovisuales de presentación del proyecto.</li>
+          </ul>
+          <h3>¿Qué puede experimentar actualmente la audiencia?</h3>
+          <p>A través de las plataformas web, los visitantes pueden acceder al contenido publicado del cómic y explorar la información disponible en la Wiki interactiva.</p>
+          <p>El contenido narrativo disponible en la primera versión del cómic corresponde a {chapters.length} capítulos y {totalPanels} viñetas:</p>
+          <ol class="project-chapters">
+            {chapters.map(chapter => (
+              <li>
+                <a href={`/#${chapter.id}`}>
+                  <span class="project-chapters__number" aria-hidden="true">{chapter.number}</span>
+                  <span><span class="visually-hidden">Capítulo {chapter.number}: </span>{chapter.title}</span>
+                  <small>{chapter.rows.flat().length} viñetas</small>
+                </a>
+              </li>
+            ))}
+          </ol>
+          <h3>Limitaciones y proyección</h3>
+          <p>Esta entrega corresponde a una primera versión del proyecto y no a un producto comercial terminado.</p>
+          <p>Entre las posibilidades de desarrollo futuro se encuentran la incorporación de nuevos capítulos, la revisión y mejora de las ilustraciones y la ampliación de los recursos interactivos vinculados a la lectura digital.</p>
+          <p>El propósito es continuar consolidando una experiencia que aproveche las posibilidades de las plataformas web sin perder la identidad narrativa y visual de A Better Mess.</p>
+        </section>
+
+        <section id="autoria" class="project-section" aria-labelledby="autoria-titulo">
+          <p class="project-section__label">Autoría y recursos</p>
+          <h2 id="autoria-titulo">Equipo de desarrollo</h2>
+          <p><strong>A Better Mess</strong> es un universo narrativo original creado por <strong>Steven Camilo Franco Bocanegra</strong>.</p>
+          <p>Su adaptación y desarrollo como proyecto transmedia ha contado con la colaboración de un equipo de cuatro integrantes, organizados en dos áreas de producción.</p>
+          <h3>Creación original y desarrollo del cómic digital</h3>
+          <dl class="project-people">
+            <div>
+              <dt>Steven Camilo Franco Bocanegra</dt>
+              <dd>Creador original de A Better Mess. Desarrollo del universo narrativo, historia, personajes y concepto general del proyecto. Participación en la adaptación y producción del cómic digital.</dd>
+            </div>
+            <div>
+              <dt>Juan Andrés Escobar Castillo</dt>
+              <dd>Colaboración en el desarrollo del cómic digital, sus recursos narrativos y visuales y la construcción de la experiencia de lectura.</dd>
+            </div>
+          </dl>
+          <h3>Desarrollo de la Wiki interactiva</h3>
+          <dl class="project-people">
+            <div>
+              <dt>Santiago Peña Agudelo</dt>
+              <dd>Desarrollo de la plataforma Wiki interactiva como experiencia complementaria del universo narrativo.</dd>
+            </div>
+            <div>
+              <dt>Alejandro Arias Ramírez</dt>
+              <dd>Colaboración en el desarrollo e integración de los contenidos y funcionalidades de la Wiki interactiva.</dd>
+            </div>
+          </dl>
+          <h3>Recursos y herramientas de producción</h3>
+          <p>El proyecto integra trabajo creativo original en la construcción narrativa, el diseño de personajes, la elaboración de guiones, la planificación visual y el desarrollo de las plataformas digitales.</p>
+          <p>Durante la producción del cómic se utilizaron herramientas de inteligencia artificial generativa como apoyo en la elaboración de ilustraciones.</p>
+          <p>También se utilizaron herramientas de inteligencia artificial como apoyo en la elaboración de guiones, el Visual DNA y la biblia transmedia del proyecto.</p>
+          <p>Para la producción de videos y del teaser se utilizó Google Flow.</p>
+          <p>Estos recursos se desarrollaron a partir de las referencias visuales, los diseños de personajes, los guiones y las indicaciones creativas establecidas para A Better Mess, acompañados de procesos de selección, revisión y corrección.</p>
+          <p>La intervención creativa humana ha sido fundamental para definir la identidad narrativa y estética del proyecto.</p>
+        </section>
+      </div>
+    </div>
+
+    <section class="shell project-closing" aria-labelledby="cierre-proyecto">
+      <h2 id="cierre-proyecto">A Better Mess</h2>
+      <p class="project-closing__question">¿Qué merece cambiar y qué merece conservarse cuando intentamos construir un mundo mejor?</p>
+      <p>Descubre la historia. Explora el universo.</p>
+      <div class="project-actions">
+        <a class="project-link" href="/#relato">Leer el cómic digital</a>
+        <a class="project-link project-link--outline" href="https://a-better-mess-wiki.vercel.app/">Explorar la wiki</a>
+      </div>
+    </section>
+  </div>
+</SiteLayout>
