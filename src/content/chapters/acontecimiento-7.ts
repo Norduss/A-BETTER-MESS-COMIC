@@ -42,7 +42,10 @@ export default {
             "text": "Eso suena bastante diferente a querer dormir todo el día."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V02_BLUND_01.png", "x": 35, "y": 25, "width": 25 },
+          { "src": "/comic/capitulo-7/globos/AC07_V02_PUFF_02.png", "x": 69, "y": 42, "width": 25 }
+        ]
       }
     ],
     [
@@ -61,9 +64,17 @@ export default {
             "kind": "dialogue",
             "speaker": "Bróko",
             "text": "Aquí no solo hay materiales viejos. Hay cosas que todavía usamos todos los días."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Latón",
+            "text": "Y no podemos perderlas como si nunca hubieran significado nada."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V03_BROKO_01.png", "x": 50, "y": 50, "width": 23 },
+          { "src": "/comic/capitulo-7/globos/AC07_V03_LATON_02.png", "x": 25, "y": 19, "width": 21 }
+        ]
       }
     ],
     [
@@ -77,7 +88,22 @@ export default {
           "width": 1536,
           "height": 1024
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Cáscara",
+            "text": "¿Basura? Si esto fuera basura, ¿por qué todos siguen buscando piezas aquí?"
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Mocho",
+            "text": "Porque siempre hay alguien que todavía puede usarlas."
+          }
+        ],
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V04_CASCARA_01.png", "x": 40, "y": 25, "width": 26 },
+          { "src": "/comic/capitulo-7/globos/AC07_V04_MOCHO_02.png", "x": 76, "y": 27, "width": 23 }
+        ]
       }
     ],
     [
@@ -91,7 +117,16 @@ export default {
           "width": 1448,
           "height": 1086
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Tuercas",
+            "text": "Esto todavía funciona... pero esa unión no va a aguantar para siempre."
+          }
+        ],
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V05_TUERKAS_01.png", "x": 50, "y": 26, "width": 27 }
+        ]
       }
     ],
     [
@@ -105,7 +140,16 @@ export default {
           "width": 1536,
           "height": 1024
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Doctor Plástico",
+            "text": "Que algo sea útil no significa que sea seguro. Hay que entender su estado antes de decidir qué hacer."
+          }
+        ],
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V06_DOCTOR_PLASTICO_01.png", "x": 48, "y": 38, "width": 30 }
+        ]
       }
     ],
     [
@@ -131,7 +175,10 @@ export default {
             "text": "Y eso no significa que tengamos que perder todo lo demás."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V07_BLUND_01.png", "x": 30, "y": 65, "width": 24 },
+          { "src": "/comic/capitulo-7/globos/AC07_V07_PUFF_02.png", "x": 45, "y": 20, "width": 25 }
+        ]
       }
     ],
     [
@@ -145,7 +192,22 @@ export default {
           "width": 1536,
           "height": 1024
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Cáscara",
+            "text": "Todos conocemos una parte distinta de este lugar."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Mocho",
+            "text": "Entonces habrá que escuchar lo que cada uno ha visto."
+          }
+        ],
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V08_CASCARA_01.png", "x": 63, "y": 23, "width": 24 },
+          { "src": "/comic/capitulo-7/globos/AC07_V08_MOCHO_02.png", "x": 86, "y": 20, "width": 23 }
+        ]
       }
     ],
     [
@@ -166,7 +228,9 @@ export default {
             "text": "Lo importante es que no decidan sobre este lugar como si aquí no viviera nadie."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V09_LATON_01.png", "x": 83, "y": 25, "width": 21 }
+        ]
       }
     ],
     [
@@ -206,7 +270,10 @@ export default {
             "text": "Y nosotros necesitamos que entiendan para qué la usamos."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V11_EXPLORADOR_01.png", "x": 76, "y": 24, "width": 24 },
+          { "src": "/comic/capitulo-7/globos/AC07_V11_LATON_02.png", "x": 35, "y": 24, "width": 25 }
+        ]
       }
     ],
     [
@@ -220,7 +287,22 @@ export default {
           "width": 1536,
           "height": 1024
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Tuercas",
+            "text": "Conocemos esta estructura. Sabemos qué partes sirven y cuáles necesitan reparación."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Doctor Plástico",
+            "text": "Los datos ayudan, pero también hay que escuchar a quienes la utilizan."
+          }
+        ],
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V12_TUERKAS_01.png", "x": 60, "y": 55, "width": 25 },
+          { "src": "/comic/capitulo-7/globos/AC07_V12_DOCTOR_PLASTICO_02.png", "x": 33, "y": 21, "width": 23 }
+        ]
       }
     ],
     [
@@ -241,7 +323,9 @@ export default {
             "text": "Si todos conocen una parte del problema... alguien tiene que empezar a escucharlos."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V13_BLUND_01.png", "x": 62, "y": 60, "width": 34 }
+        ]
       }
     ],
     [
@@ -267,7 +351,10 @@ export default {
             "text": "Bueno, eso sí que no me lo esperaba."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V14_BLUND_01.png", "x": 45, "y": 23, "width": 25 },
+          { "src": "/comic/capitulo-7/globos/AC07_V14_PUFF_02.png", "x": 85, "y": 31, "width": 26 }
+        ]
       }
     ],
     [
@@ -288,7 +375,9 @@ export default {
             "text": "Oigan... quiero ayudar a entender qué podemos hacer con todo esto."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V15_BLUND_01.png", "x": 27, "y": 20, "width": 24 }
+        ]
       }
     ],
     [
@@ -302,7 +391,22 @@ export default {
           "width": 1536,
           "height": 1024
         },
-        "text": []
+        "text": [
+          {
+            "kind": "dialogue",
+            "speaker": "Mocho",
+            "text": "Yo puedo mostrar cuáles son los caminos y espacios que más usamos."
+          },
+          {
+            "kind": "dialogue",
+            "speaker": "Tuercas",
+            "text": "Y yo puedo señalar las partes que de verdad necesitan reparación."
+          }
+        ],
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V16_MOCHO_01.png", "x": 54, "y": 18, "width": 24 },
+          { "src": "/comic/capitulo-7/globos/AC07_V16_TUERKAS_02.png", "x": 76, "y": 24, "width": 22 }
+        ]
       }
     ],
     [
@@ -323,7 +427,9 @@ export default {
             "text": "Entiendo que quieran arreglar lo que está mal... pero nosotros también tenemos algo que decir."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-7/globos/AC07_V17_BLUND_01.png", "x": 32, "y": 23, "width": 21 }
+        ]
       }
     ]
   ]
