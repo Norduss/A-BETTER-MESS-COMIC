@@ -65,7 +65,9 @@ export default {
             "text": "Para ellos esto es chatarra. Para nosotros es lo que hemos construido."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-5/globos/AC05_V04_HABITANTE_01.png", "x": 55, "y": 25, "width": 22 }
+        ]
       }
     ],
     [
@@ -86,7 +88,9 @@ export default {
             "text": "Sí, pero tampoco podemos fingir que todo lo que construimos es seguro."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-5/globos/AC05_V05_HABITANTE_01.png", "x": 74, "y": 26, "width": 24 }
+        ]
       }
     ],
     [
@@ -126,7 +130,10 @@ export default {
             "text": "Genial. Ahora hasta ponerse de acuerdo da trabajo."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-5/globos/AC05_V07_PUFF_01.png", "x": 77, "y": 21, "width": 29 },
+          { "src": "/comic/capitulo-5/globos/AC05_V07_BLUND_02.png", "x": 15, "y": 26, "width": 29 }
+        ]
       }
     ],
     [
@@ -180,7 +187,10 @@ export default {
             "text": "También es la que usamos todos los días."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-5/globos/AC05_V10_EXPLORADOR_01.png", "x": 77, "y": 20, "width": 24 },
+          { "src": "/comic/capitulo-5/globos/AC05_V10_HABITANTE_02.png", "x": 25, "y": 27, "width": 24 }
+        ]
       }
     ],
     [
@@ -206,7 +216,10 @@ export default {
             "text": "Entonces deberían preguntarnos qué estamos intentando conservar."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-5/globos/AC05_V11_EXPLORADOR_01.png", "x": 63, "y": 23, "width": 21 },
+          { "src": "/comic/capitulo-5/globos/AC05_V11_HABITANTE_02.png", "x": 37, "y": 27, "width": 24 }
+        ]
       }
     ],
     [
@@ -241,7 +254,9 @@ export default {
             "text": "O sea... arreglar las cosas también puede dañarlas."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-5/globos/AC05_V13_BLUND_01.png", "x": 54, "y": 29, "width": 28 }
+        ]
       }
     ],
     [
@@ -267,7 +282,10 @@ export default {
             "text": "Qué complicado resultó esto de tener una opinión."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-5/globos/AC05_V14_PUFF_01.png", "x": 72, "y": 23, "width": 25 },
+          { "src": "/comic/capitulo-5/globos/AC05_V14_BLUND_02.png", "x": 13, "y": 27, "width": 23 }
+        ]
       }
     ],
     [

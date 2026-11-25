@@ -17,6 +17,7 @@ const { illustration } = panel;
 const parallax = illustration.src ? panel.parallax : undefined;
 const singleTextKind = panel.text.length === 1 ? panel.text[0].kind : undefined;
 const web = illustration.src ? webSources(illustration.src) : undefined;
+const balloons = illustration.src ? panel.balloons : undefined;
 const sizes = panel.kind === 'panorama' ? '(min-width: 80rem) 76rem, 100vw' : '(min-width: 68rem) 64rem, 100vw';
 const reveal = panel.kind === 'panorama' ? 'wipe' : panel.framing === 'detail' ? 'zoom' : 'rise';
 ---
@@ -53,10 +54,27 @@ const reveal = panel.kind === 'panorama' ? 'wipe' : panel.framing === 'detail' ?
         <div class="panel-placeholder" role="img" aria-label={illustration.alt}></div>
       )}
       {panel.motion === 'drop' && <Drop />}
+      {balloons?.length && (
+        <div class="panel-balloons" aria-hidden="true">
+          {balloons.map((balloon) => (
+            <img
+              src={balloon.src}
+              alt=""
+              loading={eager ? 'eager' : 'lazy'}
+              decoding="async"
+              style={{
+                left: `${balloon.x}%`,
+                top: `${balloon.y}%`,
+                width: `${balloon.width}%`,
+              }}
+            />
+          ))}
+        </div>
+      )}
     </div>
     {panel.text.length > 0 && (
       <figcaption>
-        {panel.textInImage ? (
+        {panel.textInImage || balloons?.length ? (
           <details class="panel-transcript">
             <summary>Leer texto <span class="visually-hidden">de {panel.id}</span></summary>
             {panel.text.map((line) => (

@@ -214,7 +214,9 @@
   outline-offset: 0;
   box-shadow: 0 1.5rem 3rem -1.5rem rgb(0 0 0 / 0.8);
 }
-.panel-art img { width: 100%; height: 100%; object-fit: cover; }
+.panel-art > img { width: 100%; height: 100%; object-fit: cover; }
+.panel-balloons { position: absolute; inset: 0; pointer-events: none; }
+.panel-balloons img { position: absolute; height: auto; transform: translate(-50%, -50%); }
 .panel-placeholder { width: 100%; height: 100%; background: #fff; }
 .panel-placeholder ~ [data-drop-scene] { --ripple-color: #777; }
 
@@ -240,7 +242,7 @@
 .chapter--order .panel-frame::after { top: -0.7rem; right: -0.7rem; border-left: 0; border-bottom: 0; }
 
 .panel-art[data-parallax] { width: 100%; }
-.panel-art[data-parallax] img {
+.panel-art[data-parallax] > img {
   position: absolute;
   inset: 0;
   object-position: var(--parallax-focus);
@@ -331,19 +333,19 @@
     clip-path: inset(0 0 100% 0);
     transition: clip-path 1.3s cubic-bezier(.65, 0, .25, 1);
   }
-  .motion [data-reveal='wipe'] .panel-art:not([data-parallax]) img {
+  .motion [data-reveal='wipe'] .panel-art:not([data-parallax]) > img {
     scale: 1.12;
     transition: scale 1.8s cubic-bezier(.16, 1, .3, 1);
   }
   .motion [data-reveal].is-in { opacity: 1; transform: none; }
   .motion [data-reveal='wipe'].is-in .panel-art { clip-path: inset(0); }
-  .motion [data-reveal='wipe'].is-in .panel-art img { scale: 1; }
+  .motion [data-reveal='wipe'].is-in .panel-art > img { scale: 1; }
 
   /* Profundidad sutil en las panorámicas marcadas con depth */
   .panel-art[data-depth] {
     translate: 0 calc(var(--parallax-progress, 0) * var(--depth-distance, 14px));
   }
-  .panel-art[data-parallax] img {
+  .panel-art[data-parallax] > img {
     transform: translateY(calc(var(--parallax-progress, 0) * var(--parallax-distance, 5%))) scale(1.12);
   }
 }
@@ -378,7 +380,7 @@
 
 @media (width < 48rem) {
   .panel-art[data-parallax] { --parallax-distance: 3%; min-height: clamp(16rem, 54svh, 28rem); }
-  .panel-art[data-parallax] img { object-position: var(--parallax-mobile-focus); }
+  .panel-art[data-parallax] > img { object-position: var(--parallax-mobile-focus); }
   .chapter--patch .panel--traditional .panel-art,
   .chapter--mixed .panel--traditional .panel-art { box-shadow: 0.3rem 0.3rem 0 color-mix(in srgb, var(--accent) 55%, #000); }
   .motion .ch-intro { block-size: 210svh; }

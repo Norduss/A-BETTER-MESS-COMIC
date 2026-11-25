@@ -10,6 +10,14 @@ export type PanelText =
   | { kind: 'onomatopoeia'; text: string }
   | { kind: 'caption'; text: string };
 
+export interface PanelBalloon {
+  src: string;
+  /** Center and width as percentages of the illustration frame. */
+  x: number;
+  y: number;
+  width: number;
+}
+
 export interface Panel {
   id: string;
   label: string;
@@ -20,6 +28,7 @@ export interface Panel {
   depth?: boolean;
   text: readonly PanelText[];
   textInImage?: boolean;
+  balloons?: readonly PanelBalloon[];
   motion?: 'drop';
   audio?: { src: string; label: string };
 }

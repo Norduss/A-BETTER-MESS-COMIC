@@ -42,7 +42,10 @@ export default {
             "text": "Es lo mismo de siempre... creo."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-6/globos/AC06_V02_PUFF_01.png", "x": 77, "y": 21, "width": 25 },
+          { "src": "/comic/capitulo-6/globos/AC06_V02_BLUND_02.png", "x": 21, "y": 27, "width": 23 }
+        ]
       }
     ],
     [
@@ -116,7 +119,10 @@ export default {
             "text": "No. Pero mira, ya somos dos los que lo sabemos."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-6/globos/AC06_V06_BLUND_01.png", "x": 32, "y": 22, "width": 28 },
+          { "src": "/comic/capitulo-6/globos/AC06_V06_PUFF_02.png", "x": 65, "y": 29, "width": 30 }
+        ]
       }
     ],
     [
@@ -198,7 +204,10 @@ export default {
             "text": "Y otras que no podían quitar como si no significaran nada."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-6/globos/AC06_V11_BLUND_01.png", "x": 20, "y": 24, "width": 28 },
+          { "src": "/comic/capitulo-6/globos/AC06_V11_PUFF_02.png", "x": 73, "y": 33, "width": 30 }
+        ]
       }
     ],
     [
@@ -224,7 +233,10 @@ export default {
             "text": "Que antes todo esto me daba igual."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-6/globos/AC06_V12_PUFF_01.png", "x": 73, "y": 24, "width": 30 },
+          { "src": "/comic/capitulo-6/globos/AC06_V12_BLUND_02.png", "x": 18, "y": 31, "width": 28 }
+        ]
       }
     ],
     [
@@ -245,7 +257,9 @@ export default {
             "text": "Yo solo quería que me dejaran tranquilo..."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-6/globos/AC06_V13_BLUND_01.png", "x": 66, "y": 43, "width": 32 }
+        ]
       }
     ],
     [

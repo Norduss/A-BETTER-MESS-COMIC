@@ -43,7 +43,10 @@ export default {
             "text": "Si no está haciendo ruido aquí, no es problema mío."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-2/globos/AC02_V02_PUFF_01.png", "x": 68, "y": 20, "width": 24 },
+          { "src": "/comic/capitulo-2/globos/AC02_V02_BLUND_02.png", "x": 34, "y": 51, "width": 25 }
+        ]
       }
     ],
     [
@@ -235,7 +238,10 @@ export default {
             "text": "¿Todo? Qué manera tan complicada de pasar el día."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-2/globos/AC02_V13_PUFF_01.png", "x": 57, "y": 19, "width": 23 },
+          { "src": "/comic/capitulo-2/globos/AC02_V13_BLUND_02.png", "x": 35, "y": 29, "width": 22 }
+        ]
       }
     ],
     [
@@ -266,7 +272,11 @@ export default {
             "text": "...Pues espero que tengan otros planes."
           }
         ],
-        "textInImage": true
+        "balloons": [
+          { "src": "/comic/capitulo-2/globos/AC02_V14_BLUND_01.png", "x": 32, "y": 22, "width": 23 },
+          { "src": "/comic/capitulo-2/globos/AC02_V14_PUFF_02.png", "x": 58, "y": 32, "width": 22 },
+          { "src": "/comic/capitulo-2/globos/AC02_V14_BLUND_03.png", "x": 39, "y": 72, "width": 23 }
+        ]
       }
     ],
     [
